@@ -1,0 +1,32 @@
+get:
+  tags:
+    - Contacts
+  summary: Tüm kişileri listeleme
+  operationId: getAllContacts
+  description: Sistemde kayıtlı tüm kişileri listeler
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: page
+      in: query
+      required: false
+      description: Sayfa numarası (varsayılan 1)
+      schema:
+        type: integer
+        default: 1
+    - name: limit
+      in: query
+      required: false
+      description: Sayfa başına kayıt sayısı (varsayılan 10)
+      schema:
+        type: integer
+        default: 10
+  responses:
+    '200':
+      description: Başarılı
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/Contact.yaml'

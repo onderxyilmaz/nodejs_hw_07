@@ -1,0 +1,20 @@
+delete:
+  tags:
+    - Contacts
+  summary: Kişi silme
+  operationId: deleteContact
+  description: Belirli bir kişiyi sistemden siler
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: contactId
+      in: path
+      required: true
+      description: Silinecek kişinin ID'si
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Silme işlemi başarılı (içerik yok)
+    '404':
+      $ref: '../../../components/responses/NotFound.yaml'

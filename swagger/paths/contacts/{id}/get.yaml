@@ -1,0 +1,24 @@
+get:
+  tags:
+    - Contacts
+  summary: Belirli bir kişiyi getirme
+  operationId: getContactById
+  description: ID'ye göre belirli bir kişi kaydını getirir.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: contactId
+      in: path
+      required: true
+      description: Getirilecek kişinin ID'si
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Başarılı
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Contact.yaml'
+    '404':
+      $ref: '../../../components/responses/NotFound.yaml'

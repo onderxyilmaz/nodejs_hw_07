@@ -1,0 +1,41 @@
+patch:
+  tags:
+    - Contacts
+  summary: Kişi bilgilerini güncelleme
+  operationId: updateContact
+  description: Belirli bir kişinin bilgilerini günceller
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: contactId
+      in: path
+      required: true
+      description: Güncellenecek kişinin ID'si
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Kişinin yeni adı soyadı
+            email:
+              type: string
+              format: email
+              description: Kişinin yeni e-posta adresi
+            phone:
+              type: string
+              description: Kişinin yeni telefon numarası
+  responses:
+    '200':
+      description: Başarılı
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Contact.yaml'
+    '404':
+      $ref: '../../../components/responses/NotFound.yaml'

@@ -1,0 +1,29 @@
+{
+  "name": "nodejs_hw_07",
+  "version": "1.0.0",
+  "description": "Rehber API uygulaması - Node.js kursunun swagger dokümantasyon ödevi",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "npm run build-docs",
+    "build-docs": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json",
+    "preview-docs": "redocly preview-docs --port 8080"
+  },
+  "keywords": [
+    "nodejs",
+    "swagger",
+    "api",
+    "documentation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.0.2",
+    "nodemon": "^3.0.2"
+  }
+}
